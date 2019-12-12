@@ -21,4 +21,8 @@ public class ParkingBoy {
         ParkingLot parkingLot = parkingLots.stream().filter(p -> p.isContainCar(ticket)).findFirst().orElseThrow(NotExistException::new);
         parkingLot.pick(ticket);
     }
+
+    List<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
 }

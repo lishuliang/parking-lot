@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ParkingBoyTest {
+class ParkingBoyTest {
 
     private ParkingLot parkingLotFirst;
     private ParkingLot parkingLotSecond;
@@ -61,7 +61,7 @@ public class ParkingBoyTest {
 
     @Test
     void should_pick_when_has_parked() {
-        Ticket ticket = parkingLotFirst.park(new Car("1"));
+        Ticket ticket = parkingBoy.park(new Car("1"));
 
         parkingBoy.pick(ticket);
 
