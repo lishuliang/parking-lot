@@ -1,13 +1,13 @@
 package com.example.demo.parkingLot;
 
 public class Car {
-    private String no;
+    private String carNum;
 
-    public Car(String no) {
-        this.no = no;
+    public Car(String carNum) {
+        this.carNum = carNum;
     }
 
-    public String getNo() {
-        return no;
+    public String getCarNum() {
+        return carNum;
     }
 }

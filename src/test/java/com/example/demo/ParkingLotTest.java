@@ -38,7 +38,7 @@ class ParkingLotTest {
 
     @Test
     void should_not_pick_when_not_parking() {
-        assertThrows(NotExistException.class, () -> parkingLot.pick(new Ticket()));
+        assertThrows(NotExistException.class, () -> parkingLot.pick(new Ticket("1")));
     }
 
     @Test

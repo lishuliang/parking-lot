@@ -15,14 +15,14 @@ public class ParkingLot {
 
     public Ticket park(Car car) {
         if (isNotFull()) {
-            Ticket ticket = new Ticket();
+            Ticket ticket = new Ticket(car.getCarNum());
             this.cars.put(ticket, car);
             return ticket;
         }
         throw new NoSpaceException();
     }
 
-    boolean isNotFull() {
+    public boolean isNotFull() {
         return this.cars.size() < size;
     }
 
@@ -34,11 +34,15 @@ public class ParkingLot {
         throw new NotExistException();
     }
 
-    boolean isContainCar(Ticket ticket) {
+    public boolean isContainCar(Ticket ticket) {
         return this.cars.containsKey(ticket);
     }
 
     public int restSpace() {
         return this.size - this.cars.size();
+    }
+
+    public Double restRate() {
+        return (double)restSpace() / (double)this.size;
     }
 }

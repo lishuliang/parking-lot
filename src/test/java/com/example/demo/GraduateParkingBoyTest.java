@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.parkingLot.Car;
-import com.example.demo.parkingLot.ParkingBoy;
+import com.example.demo.parkingLot.GraduateParkingBoy;
 import com.example.demo.parkingLot.ParkingLot;
 import com.example.demo.parkingLot.Ticket;
 import com.example.demo.parkingLot.exception.NoSpaceException;
@@ -14,18 +14,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class ParkingBoyTest {
+class GraduateParkingBoyTest {
 
     private ParkingLot parkingLotFirst;
     private ParkingLot parkingLotSecond;
-    private ParkingBoy parkingBoy;
+    private GraduateParkingBoy parkingBoy;
 
     @BeforeEach
     void setUp() {
         parkingLotFirst = new ParkingLot(1);
         parkingLotSecond = new ParkingLot(1);
         List<ParkingLot> parkingLots = Arrays.asList(parkingLotFirst, parkingLotSecond);
-        parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy = new GraduateParkingBoy(parkingLots);
     }
 
     @Test
