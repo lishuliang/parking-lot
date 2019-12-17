@@ -42,7 +42,15 @@ public class ParkingLot {
         return this.size - this.cars.size();
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public Double restRate() {
         return (double)restSpace() / (double)this.size;
+    }
+
+    public String parkingLotInfo() {
+        return "P " + restSpace() + " " + this.size;
     }
 }

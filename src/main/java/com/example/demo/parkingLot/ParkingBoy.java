@@ -24,4 +24,10 @@ public abstract class ParkingBoy {
     List<ParkingLot> getParkingLots() {
         return parkingLots;
     }
+
+    public abstract int totalRestSpace();
+
+    public abstract int totalSpace();
+
+    public abstract String parkingLotInfo();
 }

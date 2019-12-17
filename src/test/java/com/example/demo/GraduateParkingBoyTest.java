@@ -68,4 +68,9 @@ class GraduateParkingBoyTest {
         assertEquals(parkingLotFirst.restSpace(), 1);
         assertEquals(parkingLotSecond.restSpace(), 1);
     }
+
+    @Test
+    void should_print_parking_boy_info() {
+        assertEquals(parkingBoy.parkingLotInfo(), "B 2 2");
+    }
 }

@@ -11,4 +11,17 @@ public class SuperParkingBoy extends GraduateParkingBoy {
     public Ticket park(Car car) {
         return ParkingLotSelector.getParkingLotByMaxRestRate(this).park(car);
     }
+
+    public int totalRestSpace() {
+        return super.getParkingLots().stream().mapToInt(ParkingLot::restSpace).sum();
+    }
+
+    public int totalSpace() {
+        return super.getParkingLots().stream().mapToInt(ParkingLot::getSize).sum();
+    }
+
+    @Override
+    public String parkingLotInfo() {
+        return "B " + totalRestSpace() + " " + totalSpace();
+    }
 }

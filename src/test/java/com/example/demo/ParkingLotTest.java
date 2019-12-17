@@ -8,6 +8,7 @@ import com.example.demo.parkingLot.exception.NotExistException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -46,5 +47,10 @@ class ParkingLotTest {
         parkingLot.park(new Car("222"));
 
         assertThrows(NoSpaceException.class, () -> parkingLot.park(new Car("111")));
+    }
+
+    @Test
+    void should_print_parking_lot_info() {
+        assertEquals(parkingLot.parkingLotInfo(), "P 1 1");
     }
 }

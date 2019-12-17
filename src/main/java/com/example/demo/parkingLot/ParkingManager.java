@@ -22,16 +22,31 @@ public class ParkingManager extends ParkingBoy{
     }
 
     public Ticket assignedPark(ParkingBoy parkingBoy, Car car) {
-        if (!isOrderParkingBoy(parkingBoy)) throw new NoAuthorityException();
+        if (isAssignedParkingBoy(parkingBoy)) throw new NoAuthorityException();
         return parkingBoy.park(car);
     }
 
     public boolean assignedPick(ParkingBoy parkingBoy, Ticket ticket) {
-        if (!isOrderParkingBoy(parkingBoy)) throw new NoAuthorityException();
+        if (isAssignedParkingBoy(parkingBoy)) throw new NoAuthorityException();
         return parkingBoy.pick(ticket);
     }
 
-    public boolean isOrderParkingBoy(ParkingBoy parkingBoy) {
-        return this.parkingBoys.contains(parkingBoy);
+    public boolean isAssignedParkingBoy(ParkingBoy parkingBoy) {
+        return !this.parkingBoys.contains(parkingBoy);
+    }
+
+    public int totalRestSpace() {
+        return super.getParkingLots().stream().mapToInt(ParkingLot::restSpace).sum() +
+                this.parkingBoys.stream().mapToInt(ParkingBoy::totalRestSpace).sum();
+    }
+
+    public int totalSpace() {
+        return super.getParkingLots().stream().mapToInt(ParkingLot::getSize).sum() +
+                this.parkingBoys.stream().mapToInt(ParkingBoy::totalSpace).sum();
+    }
+
+    @Override
+    public String parkingLotInfo() {
+        return "M " + totalRestSpace() + " " + totalSpace();
     }
 }

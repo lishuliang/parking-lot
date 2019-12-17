@@ -87,4 +87,13 @@ public class ParkingManagerTest {
     void should_not_pick_when_not_order_parking_boy() {
         assertThrows(NoAuthorityException.class, () -> parkingManager.assignedPick(new GraduateParkingBoy(null), null));
     }
+
+    @Test
+    void should_print_manager_parking_lot_info() {
+        doReturn(5).when(firstParkingLot).restSpace();
+        parkingManager = new ParkingManager(Collections.singletonList(firstParkingLot),
+                Collections.singletonList(smartParkingBoy));
+
+        assertEquals(parkingManager.parkingLotInfo(), "M 15 20");
+    }
 }
