@@ -17,13 +17,10 @@ import static org.mockito.Mockito.spy;
 public class ParkingDirectorTest {
 
     private ParkingDirector parkingDirector;
-    private ParkingManager parkingManager;
     private ParkingLot firstParkingLot;
     private ParkingLot secondParkingLot;
     private ParkingLot thirdParkingLot;
     private ParkingLot fourthParkingLot;
-    private GraduateParkingBoy firstGraduateParkingBoy;
-    private GraduateParkingBoy secondGraduateParkingBoy;
 
     @BeforeEach
     void setUp() {
@@ -31,10 +28,10 @@ public class ParkingDirectorTest {
         secondParkingLot = spy(new ParkingLot(5));
         thirdParkingLot = spy(new ParkingLot(3));
         fourthParkingLot = spy(new ParkingLot(2));
-        firstGraduateParkingBoy = spy(new GraduateParkingBoy(Collections.singletonList(secondParkingLot)));
-        secondGraduateParkingBoy = spy(new GraduateParkingBoy(Arrays.asList(thirdParkingLot, fourthParkingLot)));
-        parkingManager = new ParkingManager(Collections.singletonList(firstParkingLot),
-                                        Arrays.asList(firstGraduateParkingBoy, secondGraduateParkingBoy));
+        GraduateParkingBoy firstGraduateParkingBoy = spy(new GraduateParkingBoy(Collections.singletonList(secondParkingLot)));
+        GraduateParkingBoy secondGraduateParkingBoy = spy(new GraduateParkingBoy(Arrays.asList(thirdParkingLot, fourthParkingLot)));
+        ParkingManager parkingManager = new ParkingManager(Collections.singletonList(firstParkingLot),
+                Arrays.asList(firstGraduateParkingBoy, secondGraduateParkingBoy));
         parkingDirector = new ParkingDirector(parkingManager);
     }
 
@@ -63,12 +60,12 @@ public class ParkingDirectorTest {
         doReturn(1).when(fourthParkingLot).restSpace();
 
         assertEquals(parkingDirector.printMarkdownAllParkingLotInfo(),
-                "M 5 20\n" +
-                        "#P 2 10\n" +
-                        "#B 2 5\n" +
-                        "##P 2 5\n" +
-                        "#B 1 5\n" +
-                        "##P 0 3\n" +
-                        "##P 1 2\n");
+                "#M 5 20\n" +
+                        "##P 2 10\n" +
+                        "##B 2 5\n" +
+                        "###P 2 5\n" +
+                        "##B 1 5\n" +
+                        "###P 0 3\n" +
+                        "###P 1 2\n");
     }
 }

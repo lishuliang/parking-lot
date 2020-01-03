@@ -2,7 +2,7 @@ package com.example.demo.parkingLot;
 
 import java.util.List;
 
-public class SuperParkingBoy extends GraduateParkingBoy {
+public class SuperParkingBoy extends ParkingBoy {
     public SuperParkingBoy(List<ParkingLot> parkingLots) {
         super(parkingLots);
     }

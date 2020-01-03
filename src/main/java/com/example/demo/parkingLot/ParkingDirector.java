@@ -18,16 +18,16 @@ public class ParkingDirector {
 
     public String printMarkdownAllParkingLotInfo() {
         String result = "";
-        result += this.parkingManager.parkingLotInfo() + "\n";
-        result = printParkingLotInfo(result, this.parkingManager, "#");
-        result = printParkingBoyParkingLotInfo(result, "#");
+        result += "#" + this.parkingManager.parkingLotInfo() + "\n";
+        result = printParkingLotInfo(result, this.parkingManager, "##");
+        result = printParkingBoyParkingLotInfo(result, "##");
         return result;
     }
 
     private String printParkingBoyParkingLotInfo(String result, String prefix) {
         for (ParkingBoy parkingBoy : this.parkingManager.getParkingBoys()) {
             result += prefix + parkingBoy.parkingLotInfo() + "\n";
-            result = printParkingLotInfo(result, parkingBoy, prefix + prefix);
+            result = printParkingLotInfo(result, parkingBoy, prefix + prefix.substring(0, 1));
         }
         return result;
     }
